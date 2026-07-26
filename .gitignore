@@ -1,0 +1,14 @@
+__pycache__/
+venv/
+.env
+.pytest_cache/
+.coverage
+.idea/
+.DS_Store
+Thumbs.db
+data_samples/*
+!data_samples/.gitkeep
+NOTES.md
+desktop.ini
+
+
