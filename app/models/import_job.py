@@ -15,10 +15,8 @@ if TYPE_CHECKING:
 
 class SourceType(enum.Enum):
     csv = "csv"
-    pdf = "pdf"
     excel = "excel"
     json = "json"
-    api = "api"
 
 
 class Status(enum.Enum):
