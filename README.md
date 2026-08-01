@@ -1,13 +1,11 @@
 DataPrune API
 ----------
-DataPrune is a dedicated data processing app focused on the ingestion, validation, cleaning
-and normalisation of heterogeneous data. It brings together files from variable sources
-(currently CSV, with Excel, JSON, PDF and API support planned) and turns them into a single,
-coherent dataset: consistent formats, no duplicates, no missing or invalid values. The
-current use case focuses on French exports to Japan (wine, leather goods, cosmetics/perfumes,
-and technology), but the pipeline itself is source-agnostic and works with any heterogeneous
-dataset. The result is a clean, ready-to-use dataset together with a traceable data-quality
-report showing exactly what was fixed.
+DataPrune is a data cleaning app. It takes messy files from different sources (
+CSV, Excel, JSON, PDF and API planned) and turns them into one clean, consistent
+dataset: no duplicates, no missing or invalid values. The current example uses French
+export data to Japan (wine, leather goods, cosmetics, technology), but the app works with
+any type of data. The result is a clean dataset plus a report showing exactly what was
+fixed.
 
 WHY A CUSTOM CLEANING PIPELINE
 -----
