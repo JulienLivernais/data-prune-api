@@ -10,5 +10,5 @@ data_samples/*
 !data_samples/.gitkeep
 NOTES.md
 desktop.ini
-
+uploads/
 
