@@ -1,6 +1,7 @@
-DataPrune API
+Data Prune API
 ----------
-DataPrune is a data cleaning app. It takes messy files from different sources (
+DataPrune is a dedicated data processing app focused on the ingestion, validation, 
+cleaning and normalisation of heterogeneous data. It takes messy files from different sources (
 CSV, Excel, JSON, PDF and API planned) and turns them into one clean, consistent
 dataset: no duplicates, no missing or invalid values. The current example uses French
 export data to Japan (wine, leather goods, cosmetics, technology), but the app works with
@@ -9,14 +10,13 @@ fixed.
 
 WHY A CUSTOM CLEANING PIPELINE
 -----
-- Different sources, one cleaning engine: source-specific importers convert incoming
-  data (customs statistics, invoices, market reports) into a common internal representation,
-  then a single reusable pipeline validates, cleans and normalises it
+- Different sources, one cleaning engine: source-specific importers convert incoming files
+  into a common format, then a single pipeline validates, cleans and normalises the data
 - Every import is traceable through a quality report (input records, values corrected,
   duplicates removed, rejected records)
-- Processing runs in the background (FastAPI BackgroundTasks), so the API responds immediately
-  instead of blocking on large files
-- Source fingerprints prevent the same file from being processed twice
+- Processing runs in the background (FastAPI BackgroundTasks), so the API responds right
+  away instead of waiting on large files
+- Source fingerprints stop the same file from being processed twice
 
 DATA SOURCES
 -----
@@ -31,11 +31,9 @@ STACK
 * FastAPI
 * PostgreSQL
 * SQLAlchemy
-* Alembic
+* Alembic2
 * Pydantic
 * Pandas
-* Docker
-* Pytest
 
 DATABASE
 -----
