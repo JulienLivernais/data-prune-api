@@ -2,16 +2,16 @@ DataPrune API
 ----------
 DataPrune is a dedicated data processing app focused on the ingestion, validation, cleaning
 and normalisation of heterogeneous data. It brings together files from variable sources
-(CSV, Excel, JSON, PDF, API) and turns them into a single, coherent dataset: consistent formats, no duplicates,
-no missing or invalid values. The current use case focuses on French exports to Japan 
-(wine, leather goods, cosmetics/perfumes, and technology), 
-but the pipeline itself is source-agnostic and works with any heterogeneous dataset. 
-The result is a clean, ready-to-use dataset together with a traceable
-data-quality report showing exactly what was fixed.
+(currently CSV, with Excel, JSON, PDF and API support planned) and turns them into a single,
+coherent dataset: consistent formats, no duplicates, no missing or invalid values. The
+current use case focuses on French exports to Japan (wine, leather goods, cosmetics/perfumes,
+and technology), but the pipeline itself is source-agnostic and works with any heterogeneous
+dataset. The result is a clean, ready-to-use dataset together with a traceable data-quality
+report showing exactly what was fixed.
 
 WHY A CUSTOM CLEANING PIPELINE
 -----
-- Different sources, one cleaning engine: source-specific importers convert incoming 
+- Different sources, one cleaning engine: source-specific importers convert incoming
   data (customs statistics, invoices, market reports) into a common internal representation,
   then a single reusable pipeline validates, cleans and normalises it
 - Every import is traceable through a quality report (input records, values corrected,
@@ -24,15 +24,8 @@ DATA SOURCES
 -----
 Focus: French exports to Japan: wine, leather goods, cosmetics/perfumes, and technology
 (computing, aerospace, medical devices, semiconductors, telecom, industrial robotics).
-
-- UN Comtrade — official bilateral trade statistics between France and Japan, by product
-  (HS code), value and quantity > CSV export or API (JSON).
-- Japan Customs / e-Stat — Japanese import statistics by commodity and country of origin,
-  published monthly by the Ministry of Finance > CSV
-- University of Adelaide — Annual Database of Global Wine Markets, covering wine production
-  and consumption by country, including France and Japan > Excel
-- Wine Institute / IWSC — sample commercial export invoices for wine shipments, including
-  HS codes, quantities and destination country > PDF
+- UN Comtrade: official bilateral trade statistics between France and Japan, by product
+- Japan Customs / e-Stat: Japanese import statistics by commodity and country of origin
 
 STACK
 -----
@@ -68,20 +61,11 @@ SETUP IN LOCAL
 7. Start the server: uvicorn app.main:app --reload
 8. Open API docs: http://localhost:8000/docs
 
-SETUP WITH DOCKER
------
-1. Clone the repository: git clone https://github.com/JulienLivernais/dataprune-app
-2. Navigate to the project: cd dataprune-app
-3. Copy the environment file and fill in the values: cp .env.example .env
-4. Build and start the containers: docker compose up --build
-5. Run database migrations: docker compose exec app alembic upgrade head
-6. Open API docs: http://localhost:8000/docs
-7. Stop the containers when done: docker compose down
-
 FUTURE IMPROVEMENTS
 ----------
-- PDF + API + Google Sheets > import 
+- Excel import + JSON / API import + PDF import  
+- Google Sheets import support
 - Add tests with Pytest
 - Authentication to secure endpoints (JWT)
 - Visual representation of the data-quality report (Matplotlib), updated with the latest data injected
-
+- Docker setup 
