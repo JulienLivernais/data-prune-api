@@ -17,6 +17,7 @@ WHY A CUSTOM CLEANING PIPELINE
 - Processing runs in the background (FastAPI BackgroundTasks), so the API responds right
   away instead of waiting on large files
 - Source fingerprints stop the same file from being processed twice
+- Cleaned records can be exported as CSV, filtered by product or year
 
 DATA SOURCES
 -----
@@ -24,6 +25,20 @@ Focus: French exports to Japan: wine, leather goods, cosmetics/perfumes, and tec
 (computing, aerospace, medical devices, semiconductors, telecom, industrial robotics).
 - UN Comtrade: official bilateral trade statistics between France and Japan, by product
 - Japan Customs / e-Stat: Japanese import statistics by commodity and country of origin
+
+AVAILABLE PRODUCTS / HS CODES for export
+-----
+2204 - Wine
+3304 - Cosmetics
+4202 - Leather goods
+8471 - Computers
+8479 - Industrial machinery
+8486 - Semiconductor manufacturing equipment
+8517 - Telecom equipment, smartphones
+8541 - Semiconductors
+8542 - Integrated circuits
+8802 - Aircraft
+9018 - Medical devices
 
 STACK
 -----

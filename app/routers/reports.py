@@ -28,3 +28,4 @@ def get_report(import_job_id: int, db: Session = Depends(get_db)):
     ).first()
 
     return QualityReportResponse.model_validate(quality_report)
+
