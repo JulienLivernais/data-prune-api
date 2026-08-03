@@ -88,4 +88,4 @@ FUTURE IMPROVEMENTS
 - Add tests with Pytest
 - Authentication to secure endpoints (JWT)
 - Visual representation of the data-quality report (Matplotlib), updated with the latest data injected
-- Docker setup 
+
