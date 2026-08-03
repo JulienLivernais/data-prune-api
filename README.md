@@ -72,6 +72,16 @@ SETUP IN LOCAL
 7. Start the server: uvicorn app.main:app --reload
 8. Open API docs: http://localhost:8000/docs
 
+SETUP WITH DOCKER
+-----
+1. Clone the repository: git clone https://github.com/JulienLivernais/data-prune-api
+2. Navigate to the project: cd data-prune-api
+3. Copy the environment file and fill in the values: cp .env.example .env
+4. Build and start the containers: docker compose up --build
+5. Run database migrations: docker compose exec app alembic upgrade head
+6. Open API docs: http://localhost:8001/docs
+7. Stop the containers when done: docker compose down
+
 FUTURE IMPROVEMENTS
 ----------
 - Excel import + JSON / API import + PDF import  
