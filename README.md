@@ -84,8 +84,7 @@ SETUP WITH DOCKER
 
 FUTURE IMPROVEMENTS
 ----------
-- Excel import + JSON / API import + PDF import  
-- Google Sheets import support
+- API import + PDF + Google Sheets import
 - Add tests with Pytest
 - Authentication to secure endpoints (JWT)
 - Visual representation of the data-quality report (Matplotlib), updated with the latest data injected
