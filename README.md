@@ -24,7 +24,6 @@ DATA SOURCES
 Focus: French exports to Japan: wine, leather goods, cosmetics/perfumes, and technology
 (computing, aerospace, medical devices, semiconductors, telecom, industrial robotics).
 - UN Comtrade: official bilateral trade statistics between France and Japan, by product
-- Japan Customs / e-Stat: Japanese import statistics by commodity and country of origin
 
 AVAILABLE PRODUCTS / HS CODES for export
 -----
@@ -39,6 +38,10 @@ AVAILABLE PRODUCTS / HS CODES for export
 8542 - Integrated circuits
 8802 - Aircraft
 9018 - Medical devices
+
+CI
+-----
+GitHub Actions (CI)
 
 STACK
 -----
@@ -85,7 +88,6 @@ SETUP WITH DOCKER
 FUTURE IMPROVEMENTS
 ----------
 - API import + PDF + Google Sheets import
-- Add tests with Pytest
 - Authentication to secure endpoints (JWT)
 - Visual representation of the data-quality report (Matplotlib), updated with the latest data injected
 
