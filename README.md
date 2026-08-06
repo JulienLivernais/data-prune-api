@@ -8,6 +8,10 @@ export data to Japan (wine, leather goods, cosmetics, technology), but the app w
 any type of data. The result is a clean dataset plus a report showing exactly what was
 fixed.
 
+Deployment
+-----
+This API is deployed on Railway. Swagger UI: https://data-prune-api-production.up.railway.app/docs
+
 WHY A CUSTOM CLEANING PIPELINE
 -----
 - Different sources, one cleaning engine: source-specific importers convert incoming files
@@ -39,9 +43,9 @@ AVAILABLE PRODUCTS / HS CODES for export
 8802 - Aircraft
 9018 - Medical devices
 
-CI
+CI/CD
 -----
-GitHub Actions (CI)
+GitHub Actions (CI) + Railway (CD)
 
 STACK
 -----
