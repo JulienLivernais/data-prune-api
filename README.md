@@ -1,8 +1,11 @@
 Data Prune API
 ----------
+
+[![CI](https://github.com/JulienLivernais/data-prune-api/actions/workflows/ci.yml/badge.svg)](https://github.com/JulienLivernais/data-prune-api/actions/workflows/ci.yml)
+
 DataPrune is a dedicated data processing app focused on the ingestion, validation, 
 cleaning and normalisation of heterogeneous data. It takes messy files from different sources (
-CSV, Excel, JSON, PDF and API planned) and turns them into one clean, consistent
+CSV, Excel, JSON) and turns them into one clean, consistent
 dataset: no duplicates, no missing or invalid values. The current example uses French
 export data to Japan (wine, leather goods, cosmetics, technology), but the app works with
 any type of data. The result is a clean dataset plus a report showing exactly what was
@@ -11,6 +14,10 @@ fixed.
 Deployment
 -----
 This API is deployed on Railway. Swagger UI: https://data-prune-api-production.up.railway.app/docs
+
+CI/CD
+-----
+GitHub Actions (CI) + Railway (CD)
 
 WHY A CUSTOM CLEANING PIPELINE
 -----
@@ -23,29 +30,40 @@ WHY A CUSTOM CLEANING PIPELINE
 - Source fingerprints stop the same file from being processed twice
 - Cleaned records can be exported as CSV, filtered by product or year
 
+MULTI-SOURCE ARCHITECTURE
+-----
+- Same pipeline, different sources: structures are detected automatically, no manual config
+- Each source (UN Comtrade, Japan Customs) has its own validation, business rules, and export columns
+- Records from all sources share the same database table (PostgreSQL JSONB)
+- Records are exported separately per source (un_comtrade or japan_customs)
+
 DATA SOURCES
 -----
 Focus: French exports to Japan: wine, leather goods, cosmetics/perfumes, and technology
 (computing, aerospace, medical devices, semiconductors, telecom, industrial robotics).
-- UN Comtrade: official bilateral trade statistics between France and Japan, by product
+- UN Comtrade: official bilateral trade statistics between France and Japan, by product 
+- Japan Customs / e-Stat: Japanese import statistics by commodity and country of origin
 
-AVAILABLE PRODUCTS / HS CODES for export
+AVAILABLE PRODUCTS / HS CODES for export (UN Comtrade export)
 -----
-2204 - Wine
-3304 - Cosmetics
-4202 - Leather goods
-8471 - Computers
-8479 - Industrial machinery
-8486 - Semiconductor manufacturing equipment
-8517 - Telecom equipment, smartphones
-8541 - Semiconductors
-8542 - Integrated circuits
-8802 - Aircraft
-9018 - Medical devices
+* 2204 - Wine
+* 3304 - Cosmetics
+* 4202 - Leather goods
+* 8471 - Computers
+* 8479 - Industrial machinery
+* 8486 - Semiconductor manufacturing equipment
+* 8517 - Telecom equipment, smartphones
+* 8541 - Semiconductors
+* 8542 - Integrated circuits
+* 8802 - Aircraft
+* 9018 - Medical devices
 
-CI/CD
+RECORDS EXPORT
 -----
-GitHub Actions (CI) + Railway (CD)
+Cleaned records can be downloaded as CSV files, one export per source.
+- Choose a source: un_comtrade or japan_customs
+- Each source has its own columns in the exported file
+- For UN Comtrade, results can also be filtered by product, product code, or year
 
 STACK
 -----
@@ -89,9 +107,4 @@ SETUP WITH DOCKER
 6. Open API docs: http://localhost:8001/docs
 7. Stop the containers when done: docker compose down
 
-FUTURE IMPROVEMENTS
-----------
-- API import + PDF + Google Sheets import
-- Authentication to secure endpoints (JWT)
-- Visual representation of the data-quality report (Matplotlib), updated with the latest data injected
 
