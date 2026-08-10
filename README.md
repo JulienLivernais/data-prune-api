@@ -71,9 +71,11 @@ STACK
 * FastAPI
 * PostgreSQL
 * SQLAlchemy
-* Alembic2
+* Alembic
 * Pydantic
 * Pandas
+* Docker
+* Pytest
 
 DATABASE
 -----
