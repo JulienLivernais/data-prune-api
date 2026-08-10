@@ -1,6 +1,6 @@
 import csv
 import io
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from sqlalchemy import cast, String
@@ -38,12 +38,19 @@ SIGNATURE_KEY_BY_SOURCE = {
 }
 
 
-@router.get("/records/export")
+@router.get(
+    "/records/export",
+    summary="Export records as CSV, filtered by source",
+    description=(
+        "Filters product, cmd_code and ref_year only apply when source=un_comtrade. "
+        "They are ignored for source=japan_customs."
+    ),
+)
 def export_records(
     source: str,
-    product: str | None = None,
-    cmd_code: str | None = None,
-    ref_year: int | None = None,
+    product: str | None = Query(None, description="Only used with un_comtrade"),
+    cmd_code: str | None = Query(None, description="Only used with un_comtrade"),
+    ref_year: int | None = Query(None, description="Only used with un_comtrade"),
     db: Session = Depends(get_db),
 ):
     if source not in EXPORT_FIELDS_BY_SOURCE:
