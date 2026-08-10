@@ -34,7 +34,7 @@ def test_export_records(client):
         files={"file": ("export.csv", fake_file, "text/csv")},
     )
 
-    response = client.get("/records/export?cmd_code=2204")
+    response = client.get("/records/export?source=un_comtrade&cmd_code=2204")
 
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("text/csv")
