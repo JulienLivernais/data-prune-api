@@ -3,13 +3,11 @@ Data Prune API
 
 [![CI](https://github.com/JulienLivernais/data-prune-api/actions/workflows/ci.yml/badge.svg)](https://github.com/JulienLivernais/data-prune-api/actions/workflows/ci.yml)
 
-DataPrune is a dedicated data processing app focused on the ingestion, validation, 
-cleaning and normalisation of heterogeneous data. It takes messy files from different sources (
-CSV, Excel, JSON) and turns them into one clean, consistent
-dataset: no duplicates, no missing or invalid values. The current example uses French
-export data to Japan (wine, leather goods, cosmetics, technology), but the app works with
-any type of data. The result is a clean dataset plus a report showing exactly what was
-fixed.
+DataPrune is a FastAPI service that ingests trade data files (CSV, Excel, JSON), cleans and validates them, 
+and exports the result as CSV. It currently supports two sources, UN Comtrade and Japan Customs, 
+each processed with its own validation rules and export format. The case study covers French exports to 
+Japan (wine, leather goods, cosmetics, technology). Each import produces a quality report: input records, 
+rejected records, duplicates removed and values corrected.
 
 Deployment
 -----
